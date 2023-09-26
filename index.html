@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>I want to see more words</h1>
+
+{% if session ['user_id'] %}
+<h2>Click <a href = "/secrets">here</a> to see the secret!</h2>
+
+{% else %}
+<h2> <a href = "/login">Click here to login</a></h2>
+
+{% endif %}
+
+
+{% endblock %}

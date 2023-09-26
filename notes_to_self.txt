@@ -1,0 +1,7 @@
+register.html make sure to review, but pretty sure its copy paste for WTForms basically
+what is field.errors again?
+
+register
+          ## Implement what to do if new user was trying to taken username thats already there
+
+          

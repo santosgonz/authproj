@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>feedback</h1>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    {% for field in form if field.widget.input_type != 'hidden' %}
+    <p>
+        {{ field.label }}
+        {{ field }}
+
+        {% for error in field.errors %}
+        {{ error }}
+        {% endfor %}
+    </p>
+    {% endfor %}
+
+    <button>Post Feedback</button>
+</form>
+<ul>
+    {% for feedback in all_feedback %}
+    <li>{{ feedback.user.username}} - {{ feedback.text}} </li>
+    {% endfor %}
+    
+
+    {% for feedback in all_feedback %}
+    <li>{{ feedback.text }}</li>
+    {% if session['user_id'] == feedback.user_id %}
+    <form action="/users/{{ user.username }}/feedback/edit" method="GET">
+        <button type="submit">Edit Feedback</button>
+    </form>
+    <form action="/feedback/{{feedback.id}}/delete" method="POST">
+        <button type="submit">X</button>
+    </form>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% endblock %}
